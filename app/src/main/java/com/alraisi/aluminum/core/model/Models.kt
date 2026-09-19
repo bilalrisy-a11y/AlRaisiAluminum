@@ -68,9 +68,10 @@ data class GlassItem(
     val name: String,
     val widthCm: Double,
     val heightCm: Double,
-    val quantity: Int = 1,
+    val quantity: Int = 1
+) {
     val areaM2: Double get() = widthCm * heightCm / 10000.0
-)
+}
 
 data class BerklozItem(
     val hostName: String,        // الإطار / القاطع الحامل
@@ -83,11 +84,13 @@ data class AccessoryItem(
     val name: String,
     val category: String,
     val quantity: Double,
-    val unitPrice: Double,
+    val unitPrice: Double
+) {
     val total: Double get() = quantity * unitPrice
-)
+}
 
 data class BarCut(val lengthCm: Double, val label: String)
+
 data class BarPlan(
     val profileName: String,
     val barIndex: Int,
@@ -104,11 +107,12 @@ data class CostBreakdown(
     val accessoryCost: Double = 0.0,
     val laborCost: Double = 0.0,
     val transport: Double = 0.0,
-    val other: Double = 0.0,
-) (
-    val totalCost: Double get() = aluminumCost + berklozCost + rubberCost + glassCost +
-            accessoryCost + laborCost + transport + other
-)
+    val other: Double = 0.0
+) {
+    val totalCost: Double 
+        get() = aluminumCost + berklozCost + rubberCost + glassCost +
+                accessoryCost + laborCost + transport + other
+}
 
 data class CalcResult(
     val cuttingList: List<CuttingItem> = emptyList(),
