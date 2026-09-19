@@ -105,10 +105,10 @@ data class CostBreakdown(
     val laborCost: Double = 0.0,
     val transport: Double = 0.0,
     val other: Double = 0.0,
-) {
+) (
     val totalCost: Double get() = aluminumCost + berklozCost + rubberCost + glassCost +
             accessoryCost + laborCost + transport + other
-}
+)
 
 data class CalcResult(
     val cuttingList: List<CuttingItem> = emptyList(),
